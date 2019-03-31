@@ -11,19 +11,9 @@ values = [14,2,3,4,5,6,7,8,9,10,11,12,13,14,2,3,4,5,6,7,8,9,10,11,12,13,14,2,3,4
 working_names = names.copy()
 shuffled_working_names = random.sample(working_names, len(working_names))
 
-
-#player1_deck = [ '7 of Diamonds', '6 of Diamonds',  'Queen of Hearts', '4 of Clubs', '5 of Diamonds', 'Queen of Diamonds', '8 of Clubs', '6 of Clubs',      'King of Diamonds', '6 of Spades', '9 of Diamonds', 'Queen of Clubs', '2 of Diamonds', '1 of Hearts', '9 of Spades',  '4 of Hearts',  '3 of Spades', '10 of Spades',  'Queen of Spades', '8 of Diamonds',   '10 of Diamonds','Jack of Hearts', 'Jack of Diamonds',    '9 of Hearts', '3 of Diamonds', '3 of Clubs']
-#computer_deck = ['7 of Hearts',  'Jack of Spades', '8 of Spades',    '5 of Hearts', '5 of Clubs',    '7 of Spades',       '5 of Spades', 'King of Hearts', 'King of Spades',   '9 of Clubs',    '4 of Spades',  '1 of Diamonds', '2 of Hearts',   '10 of Clubs', 'King of Clubs', '7 of Clubs',  '2 of Clubs', '10 of Hearts', '4 of Diamonds',     '6 of Hearts',       '8 of Hearts',   'Jack of Clubs',     '1 of Clubs',    '2 of Spades', '1 of Spades', '3 of Hearts'  ]
-
-#player1_deck = [ '3 of Diamonds', '7 of Diamonds', '6 of Diamonds',  'Queen of Hearts', '4 of Clubs', '5 of Diamonds', 'Queen of Diamonds', '8 of Clubs', '6 of Clubs',      'King of Diamonds', '6 of Spades', '9 of Diamonds', 'Queen of Clubs', '2 of Diamonds', '1 of Hearts', '9 of Spades',  '4 of Hearts', '10 of Spades', '3 of Spades',  'Queen of Spades', '8 of Diamonds', 'Jack of Hearts',  '10 of Diamonds', 'Jack of Diamonds',    '3 of Clubs', '9 of Hearts']
-#computer_deck = ['7 of Hearts',  'Jack of Spades', '8 of Spades',    '5 of Hearts', '5 of Clubs',    '7 of Spades',       '5 of Spades', 'King of Hearts', 'King of Spades',   '9 of Clubs',    '4 of Spades',  '1 of Diamonds', '2 of Hearts',   '10 of Clubs', 'King of Clubs', '7 of Clubs', '10 of Hearts', '2 of Clubs',  '4 of Diamonds',     '6 of Hearts',      'Jack of Clubs',   '8 of Hearts',      '1 of Clubs',    '2 of Spades',   '3 of Hearts', '1 of Spades',   ]
-
 player1_deck = shuffled_working_names[0:26]
 computer_deck = shuffled_working_names[26:]
 war_deck=[]
-
-#print(player1_deck)
-#print(computer_deck)
 
 player1_count = 0
 computer_count = 0
@@ -59,7 +49,7 @@ def function(card1, card2):
 		#print("Your count is now", player1_count, ", and the computer's count is", computer_count, ".")
 	elif value_we_want_for_card1 < value_we_want_for_card2:
 		print("\nYour card:", card1, "\nComp's card:", card2, "\nComputer wins")
-		#global computer_count
+
 		if len(war_deck) == 0:
 			computer_count=computer_count+ 2 + second_to_last_tie
 			second_to_last_tie= 0
@@ -71,33 +61,24 @@ def function(card1, card2):
 		#print("Your count is now", player1_count, ", and the computer's count is", computer_count, ".")
 		
 	elif value_we_want_for_card1 == value_we_want_for_card2:
-		#player1_count=player1_count+1
-		#computer_count=computer_count+1
+
 		x = len(player1_deck)
 		y = len(computer_deck)
 		if x==0 and y==0:
 			print("Well, this is epic. You drew", card1, ", and the computer drew", card2, ". You both get to keep the cards you just drew, plus everything else.")
 			computer_count = computer_count + 1 + count_in_a_tie/2 + len(war_deck)/2
 			player1_count = player1_count + 1 + count_in_a_tie/2 + len(war_deck)/2
-		#if x==1 and y==1:
-			#print("You drew", card1, ",and the computer drew", card2, ".\n\nYou each have only 1 card left, so let's draw it and winner takes the war deck.\n")
-			#second_to_last_tie+=2
-			#computer_count=computer_count+1
-			#player1_count=player1_count+1
-			
-			
+						
 		if x > 1 and y > 1:
 		
 			card3 = player1_deck[0]
 			player1_deck.remove(card3)
 			war_deck.append(card3)
-		
-		
+				
 			card6 = computer_deck[0]
 			computer_deck.remove(card6)
 			war_deck.append(card6)
-				
-			
+							
 			if x > 2 and y > 2: 
 			
 				card4 = player1_deck[0]
@@ -107,11 +88,9 @@ def function(card1, card2):
 				card7 = computer_deck[0]
 				computer_deck.remove(card7)
 				war_deck.append(card7)
-				
-				
+								
 				if x > 3 and y > 3: 
-		
-		
+				
 					card5 = player1_deck[0]
 					player1_deck.remove(card5)
 					war_deck.append(card5)
@@ -123,14 +102,8 @@ def function(card1, card2):
 		count_in_a_tie += 2
 		
 		if x==1 and y==1:
-			#print("You drew", card1, ",and the computer drew", card2, ".\n\nYou each have only 1 card left, so let's draw it and winner takes the war deck.\n")
 			second_to_last_tie+=2
-			count_in_a_tie -= 2
-			#computer_count=computer_count+1
-			#player1_count=player1_count+1
-		
-		#if len(war_deck)/2 == 0:
-		#because 2/2 = 1, 0/2 is the same as 0
+			count_in_a_tie -= 2	
 		if len(war_deck) == 0 and len(player1_deck) == 0 and len(computer_deck) == 0:
 
 			player1_count+=1
@@ -140,20 +113,13 @@ def function(card1, card2):
 		if len(war_deck)/2 != 0:
 			if len(player1_deck)!=0 and len(computer_deck)!=0:
 				print("\nIt's a tie , between", card1, "and", card2,  ".\n\nWe've taken", len(war_deck)/2, "total face-down cards from each of you, and now we have to do a war.")
-				#print("len(war_deck) is now", len(war_deck), ",and count_in_a_tie is now", count_in_a_tie, "and second_to_last_tie is", second_to_last_tie)
-	#print("Your count is now", player1_count, ", and the computer's count is", computer_count, ".\n")
 	print("\nYour count:", player1_count)
 	print("Computer's count:", computer_count)
-	#print("len(war_deck) is", len(war_deck), "\ncount_in_a_tie is", count_in_a_tie, "\nand second_to_last_tie is", second_to_last_tie)
 	
 while player1_count + computer_count != 52:	
 	if len(war_deck) ==0:
 		if player1_count == 0 and computer_count==0:
 			input("Hi, you are playing war against a computer. We've shuffled both your decks already. Hit 'Enter' to start.")
-		#else:
-			#input(Next turn:)
-	#if len(war_deck) != 0:
-		#input("\nBrace yourself, and hit enter.")
 	card1 = player1_deck[0]
 	player1_deck.remove(card1)
 	card2 = computer_deck[0]
